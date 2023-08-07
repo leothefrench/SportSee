@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+@import 'reset';
+
+@mixin text-typo {
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 1.1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5rem; /* 100% */
+}

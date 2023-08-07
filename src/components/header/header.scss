@@ -1,0 +1,33 @@
+@import '../../styles/variables';
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        margin-left: 1.5rem;
+
+        &__title-logo{
+            margin-left: .5rem;
+            color:#E60000;
+        }
+    }
+
+    &__navbar__link{
+        display: flex;
+        justify-content: space-around;
+
+        &__nav-item-list {
+            color: #fff;
+            margin: 0 7rem;
+            list-style-type: none;
+            @include text-typo;
+        }
+    }
+}
