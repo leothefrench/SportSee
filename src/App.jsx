@@ -1,13 +1,11 @@
 import './App.css'
-import Dashboard from './components/dashboard/dashboard'
-import Header from './components/header/header'
+import Header from './components/header/Header'
 
 function App() {
 
   return (
     <>
       <Header />
-      <Dashboard />
     </>
   )
 }

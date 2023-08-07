@@ -12,22 +12,22 @@
         margin-top: 1rem;
         margin-bottom: 1rem;
         margin-left: 1.5rem;
+    }
 
-        &__title-logo{
-            margin-left: .5rem;
-            color:#E60000;
-        }
+    &__navbar {
+
     }
 
     &__navbar__link{
         display: flex;
         justify-content: space-around;
 
-        &__nav-item-list {
+        &__item {
             color: #fff;
             margin: 0 7rem;
             list-style-type: none;
             @include text-typo;
+            cursor: pointer;
         }
     }
 }
