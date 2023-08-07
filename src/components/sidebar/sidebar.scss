@@ -1,0 +1,19 @@
+@import '../../styles/variables';
+
+.sidebar {
+    width: 7rem;
+    height: 100vh;
+    background-color: #000;
+
+    &__logo {
+        text-align: center;
+        // &first-child: 16px;
+    }
+
+    &__copyright {
+        @include text-typo;
+        height: 4rem;
+        font-size: 0.75rem;
+        transform: rotate(-90deg);
+    }
+}
