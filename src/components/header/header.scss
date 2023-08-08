@@ -2,6 +2,7 @@
 
 .header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     background-color: #000;
 
@@ -10,13 +11,15 @@
         margin-bottom: 1rem;
         margin-left: 1.5rem;
     }
-
+    &__navbar {
+        display: flex;
+        justify-content: space-around;
+    }
     &__navbar__link{
         display: flex;
         justify-content: space-around;
 
         &__item {
-            margin: 0 7rem;
             list-style-type: none;
             @include text-typo;
             cursor: pointer;
