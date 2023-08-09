@@ -1,6 +1,6 @@
 import {getUserMainData, getUserActivity, getUserAverageSessions, getUserPerformance} from './data'
 
-const getData = async (id, type) =>{
+const getData = async (type, id) => {
     let data = []
 
     switch(type) {

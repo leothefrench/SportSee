@@ -1,18 +1,17 @@
 import logo from '../../assets/logo.svg'
 import './header.scss'
+import { NavLink } from 'react-router-dom'
 
 const Header = () => {
   return (
     <header className='header'>
       <img src={ logo } alt="sport fee logo" className='header__logo' />
-      <div className="header__navbar">
-        <ul className='header__navbar__link'>
-          <li className='header__navbar__link__item'>Accueil</li>
-          <li className='header__navbar__link__item'>Profil</li>
-          <li className='header__navbar__link__item'>Réglage</li>
-          <li className='header__navbar__link__item'>Communauté</li>
-        </ul>
-      </div>
+      <nav className="header__navbar">     
+          <NavLink to='/' className='header__navbar__link'>Accueil</NavLink>
+          <NavLink to='#' className='header__navbar__link'>Profil</NavLink>
+          <NavLink to='#' className='header__navbar__link'>Réglage</NavLink>
+          <NavLink to='#' className='header__navbar__link'>Communauté</NavLink>
+      </nav>
     </header>
   )
 }
