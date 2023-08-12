@@ -1,8 +1,21 @@
 @import '../../styles/variables';
 
-// .header {
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-//     background-color: #000;
-// }
+.header {
+    @include text-typo;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #020203;
+    height: 91px;
+
+    &__logo {
+        width: 178px;
+        margin-left: 1.5rem;
+    }
+
+    &__navbar__link{
+        color: #fff;
+        padding-right: 9rem;
+        text-decoration: none;
+    }
+}

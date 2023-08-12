@@ -1,13 +1,17 @@
+import Sidebar from '../components/sidebar/Sidebar';
 import './home.scss'
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Home = () => {
   return (
+    <main className='main-home'>
     <div className='home'>
       <h1 className='home__title'>Select your user</h1>
-      <Link to='user/12' className='home__linkUser'>Karl</Link>
-      <Link to='user/18' className='home__linkUser'>Cecilia</Link>
+      <NavLink to='user/12' className='home__linkUser'>Karl</NavLink>
+      <NavLink to='user/18' className='home__linkUser'>Cecilia</NavLink>
     </div>
+    <Sidebar />
+    </main>
   )
 }
 

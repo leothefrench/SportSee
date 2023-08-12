@@ -1,25 +1,23 @@
 import {getUserMainData, getUserActivity, getUserAverageSessions, getUserPerformance} from './data'
 
-const getData = async (type, id) => {
+export const getData = async (type, id) => {
     let data = []
 
     switch(type) {
         case 'USER_MAIN_DATA': 
             data = await(getUserMainData(id))
-            break
+            break;
         case 'USER_ACTIVITY':
             data = await(getUserActivity(id))
-            break
+            break;
         case 'USER_AVERAGE_SESSIONS':
             data = await(getUserAverageSessions(id))
-            break
+            break;
         case 'USER_PERFORMANCE':
             data = await(getUserPerformance(id))
-            break
+            break;
         default:
-            alert('ERROR DATA')
+            alert('ERROR DATA');
     }
     return data;
 }
-
-export default getData;

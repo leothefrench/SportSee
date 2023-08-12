@@ -184,7 +184,6 @@ const USER_AVERAGE_SESSIONS = [
     }
 ]
 
-
 const USER_PERFORMANCE = [
     {
         userId: 12,
@@ -263,10 +262,48 @@ const USER_PERFORMANCE = [
 ]
 
 
+export const getUserMainData = async (id) => {
+    try {
+        const response = USER_MAIN_DATA.find((el) => el.id == id)
+        return {data: response}
 
-module.exports = {
-    USER_MAIN_DATA,
-    USER_ACTIVITY,
-    USER_AVERAGE_SESSIONS,
-    USER_PERFORMANCE
+    } catch(err) {
+        console.log(err)
+     }
 }
+export const getUserActivity = async (id) => {
+    try {
+        const response = USER_ACTIVITY.find((el) => el.id == id)
+        return {data: response}
+
+    } catch(err) {
+        console.log(err)
+     }
+}
+export const getUserAverageSessions = async (id) => {
+    try {
+        const response = USER_AVERAGE_SESSIONS.find((el) => el.id == id)
+        return {data: response}
+
+    } catch(err) {
+        console.log(err)
+     }
+}
+export const getUserPerformance = async (id) => {
+    try {
+        const response = USER_PERFORMANCE.find((el) => el.id == id)
+        return {data: response}
+
+    } catch(err) {
+        console.log(err)
+     }
+}
+
+
+
+// module.exports = {
+//     USER_MAIN_DATA,
+//     USER_ACTIVITY,
+//     USER_AVERAGE_SESSIONS,
+//     USER_PERFORMANCE
+// }

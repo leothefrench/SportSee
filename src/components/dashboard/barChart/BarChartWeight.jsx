@@ -1,5 +1,5 @@
 import './barChartWeight.scss'
-import { getData } from '../../mock/getData' 
+import { getData } from '../../mock/getData'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
@@ -8,30 +8,34 @@ import iconCaloriesBrulees from '../../../assets/barChart-icons/Oval-clories-bru
 
 const BarChartWeight = () => {
 
-const [data, setData ] = useState([])
+const [data, setData] = useState([])
 const {id} = useParams()
 
-const req = getData('USER_ACTIVITY', id)
-setData(req.sessions)
-
+  useEffect(() => {
+    const data = async () => {
+      const req = await getData('USER_ACTIVITY', id)
+      setData(req.data.sessions)
+    }
+    data()
+  }, [id])
 
   return (
     <wrapper-barChart>
       <header>
         <h1>Activité quotidienne</h1>
-        <legend>
+        <Legend>
           <bar-column-information>
-            <puce>{ iconWeight }</puce>
+            <span>{ iconWeight }</span>
             <text>Poids (kg)</text>
           </bar-column-information>
           <bar-column-information>
-            <puce>{ iconCaloriesBrulees }</puce>
+            <span>{ iconCaloriesBrulees }</span>
             <text>Calories brûlées (kCal)</text>
           </bar-column-information>
-        </legend>
+        </Legend>
       </header>
       
-      <ResponsiveContainer width={250} >
+      {/* <ResponsiveContainer width={250} > */}
         <BarChart width={500} height={300} data={data} margin={{
           top: 5,
           right: 30,
@@ -45,7 +49,7 @@ setData(req.sessions)
           <Bar yAxisId='kilogram' dataKey='kilogram' fill='#282D30' />
           <Bar yAxisId='calories' dataKey='calories' fill='#E60000'/>
         </BarChart>
-      </ResponsiveContainer>
+      {/* </ResponsiveContainer> */}
     </wrapper-barChart>
   )
 }

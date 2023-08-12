@@ -1,19 +1,25 @@
 @import '../../styles/variables';
 
 .sidebar {
-    width: 7rem;
+    width: 9%;
     height: 100vh;
-    background-color: #000;
+    background: #020203;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
     &__logo {
         text-align: center;
-        // &first-child: 16px;
+        margin-top: 6rem;
+
+        &>img {
+            width: 4rem;
+            margin-top: 1.1rem;
+        }
     }
 
     &__copyright {
         @include text-typo;
-        height: 4rem;
         font-size: 0.75rem;
         transform: rotate(-90deg);
+        margin-top: 2rem;
     }
 }

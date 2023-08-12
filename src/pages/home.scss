@@ -1,5 +1,7 @@
-.home {
+.main-home {
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
+    justify-content: center;
     align-items: center;
+    width: 91%;
 }
