@@ -1,56 +1,52 @@
 import './barChartWeight.scss'
-import { getData } from '../../mock/getData'
-import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { USER_ACTIVITY } from '../../mock/data'
+import { useParams } from 'react-router-dom';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import iconWeight from '../../../assets/barChart-icons/Oval-poids-icon.svg'
 import iconCaloriesBrulees from '../../../assets/barChart-icons/Oval-clories-brulees-icon.svg'
 
 const BarChartWeight = () => {
 
-const [data, setData] = useState([])
-const {id} = useParams()
+  const {userId} = useParams()
+  const data = USER_ACTIVITY.find((el) => el.id == userId)
+  console.log(data.sessions);
 
-  useEffect(() => {
-    const data = async () => {
-      const req = await getData('USER_ACTIVITY', id)
-      setData(req.data.sessions)
-    }
-    data()
-  }, [id])
+  let dataSessions = data.sessions.map((el) => {
+    return `${el.kilogram}`
+  })
+
+  console.log(dataSessions)
+
+  for(let i =0; i < data.length; i++) {
+    data[i].day = i +1;
+  }
 
   return (
-    <wrapper-barChart>
-      <header>
+    <div>
+      <div>
         <h1>Activité quotidienne</h1>
         <Legend>
-          <bar-column-information>
-            <span>{ iconWeight }</span>
-            <text>Poids (kg)</text>
-          </bar-column-information>
-          <bar-column-information>
-            <span>{ iconCaloriesBrulees }</span>
-            <text>Calories brûlées (kCal)</text>
-          </bar-column-information>
+          <div className='legend-poids'>
+            <span>{iconWeight}</span>
+            <span>Poids (kg)</span>
+          </div>
+          <div className='legend-calories'>
+            <span>{iconCaloriesBrulees}</span>
+            <span>Calories brûlées (kCal)</span>
+          </div>
         </Legend>
-      </header>
-      
-      {/* <ResponsiveContainer width={250} > */}
-        <BarChart width={500} height={300} data={data} margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5
-        }}>
-          <CartesianGrid strokeDasharray='1 1'/>
-          <XAxis dataKey='day'/>
-          <YAxis yAxisId='kilogram' dataKey='kilogram'/>
-          <YAxis yAxisId='calories' dataKey='calories'/>
-          <Bar yAxisId='kilogram' dataKey='kilogram' fill='#282D30' />
-          <Bar yAxisId='calories' dataKey='calories' fill='#E60000'/>
+      </div>
+      <ResponsiveContainer height={200}>
+        <BarChart data={data.sessions} barGap={8} barCategoryGap={1} >
+          <CartesianGrid strokeDasharray='1 1' vertical={false} />
+          <XAxis dataKey='day' tickLine={false} tick={{fontSize: 14}} dy={15} stroke='1 1' />
+          <YAxis yAxisId='kilogram' dataKey='kilogram' type='number' domain={['dataMin - 2', 'dataMax + 1']} tickCount="4" axisLine={false} orientation="right" tickLine={false} tick={{fontSize: 14}} dx={15} />
+          <YAxis yAxisId='calories' dataKey='calories' type='number' domain={['dataMin - 20', 'dataMax + 10']} hide={true}  />
+          <Bar yAxisId="kilogram" dataKey="kilogram" fill="#282D30" barSize={7} radius={[50, 50, 0, 0]}/>
+          <Bar yAxisId="calories" dataKey="calories" fill="#E60000" barSize={7} radius={[50, 50, 0, 0]}/>
         </BarChart>
-      {/* </ResponsiveContainer> */}
-    </wrapper-barChart>
+      </ResponsiveContainer>
+    </div>
   )
 }
 export default BarChartWeight

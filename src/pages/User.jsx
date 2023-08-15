@@ -1,7 +1,6 @@
 import './user.scss'
-import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { getData } from '../components/mock/getData'
+import { USER_MAIN_DATA, USER_AVERAGE_SESSIONS } from '../components/mock/data'
 import SideBar from '../components/sidebar/Sidebar'
 import HeaderDashboard from '../components/dashboard/headerDashboard/HeaderDashboard'
 import EnergieKeyData from '../components/dashboard/energie/EnergieKeyData'
@@ -10,51 +9,47 @@ import proteinIcon from '../assets/energie-icons/protein-icon.svg'
 import carbsIcon from '../assets/energie-icons/carbs-icon.svg'
 import fatIcon from '../assets/energie-icons/fat-icon.svg'
 import BarChartWeight from '../components/dashboard/barChart/BarChartWeight'
+import Objectifs from '../components/dashboard/objectifs/Objectifs'
 
 const User = () => {
 
-  const [data, setData] = useState([])
   const {id} = useParams()
-  
-    useEffect(() => {
-      const data = async () => {
-        const req = await getData('USER_MAIN_DATA', id)
-        if(!req) return alert('Error data')
-        setData(req.data)
-      }
-      data() //I call the data function
-    }, [id]) // Dependency array - the change that I follow in my case teh id of user
+  const data = USER_MAIN_DATA.find((el) => el.id == id)
+  console.log(data);
 
   return (
     <main className='main'>
       <SideBar />
       <div className='main__wrapper'>
-        <HeaderDashboard className='main__wrapper__header' name={data?.userInfos?.firstName} />
-        <section className='main__wrapper__section'>
-          <BarChartWeight />
-        </section>
-        <aside>
-          <EnergieKeyData 
-          icon={caloriesIcon}
-          infoEnergie={`${data?.keyData?.calorieCount/1000}kCal`}
-          text='Calories'
-          />
-          <EnergieKeyData 
-          icon={proteinIcon}
-          infoEnergie={`${data?.keyData?.proteinCount}g`}
-          text='Proteines'
-          />
-          <EnergieKeyData 
-          icon={carbsIcon}
-          infoEnergie={`${data?.keyData?.carbohydrateCount}g`}
-          text='Glucides'
-          />
-          <EnergieKeyData 
-          icon={fatIcon}
-          infoEnergie={`${data?.keyData?.lipidCount}g`}
-          text='Lipides'
-          />
-        </aside>
+        <HeaderDashboard className='main__wrapper__header' name={data.userInfos.firstName} /> 
+        <div className="main__wrapper__graph-container">
+          <section className='main__wrapper__section'>
+            <BarChartWeight />
+            <Objectifs />
+          </section>
+          <aside className='aside'>
+            <EnergieKeyData 
+            icon={caloriesIcon}
+            infoEnergie={`${data.keyData.calorieCount/1000}kCal`}
+            text='Calories'
+            />
+            <EnergieKeyData 
+            icon={proteinIcon}
+            infoEnergie={`${data.keyData.proteinCount}g`}
+            text='Proteines'
+            />
+            <EnergieKeyData 
+            icon={carbsIcon}
+            infoEnergie={`${data.keyData.carbohydrateCount}g`}
+            text='Glucides'
+            />
+            <EnergieKeyData 
+            icon={fatIcon}
+            infoEnergie={`${data.keyData.lipidCount}g`}
+            text='Lipides'
+            />
+          </aside>
+        </div>
       </div>
     </main>
   )

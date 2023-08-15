@@ -1,7 +1,10 @@
-.main-home {
+.home {
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    align-items: center;
-    width: 91%;
+
+    &__user {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }

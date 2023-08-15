@@ -2,4 +2,21 @@
 
 .main {
     display: flex;
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+
+        &__graph-container {
+            display: flex;
+
+            &__section {
+                background-color: rgb(221, 130, 130);
+            }
+        }
+    }
+}
+
+.aside {
+    background-color: greenyellow;
 }
