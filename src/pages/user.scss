@@ -4,19 +4,31 @@
     display: flex;
 
     &__wrapper {
+        width: 80%;
+        margin: auto;
+        margin-top: 3rem;
+
+        &__section {
+            width: 80%;
+
+            &__trois-cubes {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+
+    &__wrapper__graph-container {
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
 
-        &__graph-container {
-            display: flex;
+        &__aside {
+            width: 20%;
 
-            &__section {
-                background-color: rgb(221, 130, 130);
+            &__keyData {
+                display: flex;
             }
         }
     }
 }
 
-.aside {
-    background-color: greenyellow;
-}

@@ -1,0 +1,18 @@
+.keyData {
+    display: flex;
+    align-items: center;
+
+    &__energie {
+        display: flex;
+        flex-direction: column;
+
+        &__number-energie {
+            color: #282D30;
+            font-family: Roboto;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 24px; /* 120% */
+        }
+    }
+}

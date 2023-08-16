@@ -10,6 +10,8 @@ import carbsIcon from '../assets/energie-icons/carbs-icon.svg'
 import fatIcon from '../assets/energie-icons/fat-icon.svg'
 import BarChartWeight from '../components/dashboard/barChart/BarChartWeight'
 import Objectifs from '../components/dashboard/objectifs/Objectifs'
+import RadarPerformance from '../components/dashboard/radar/RadarPerformance'
+import { KeyPerformanceIndice } from '../components/dashboard/KPI/KeyPerformanceIndice'
 
 const User = () => {
 
@@ -25,9 +27,13 @@ const User = () => {
         <div className="main__wrapper__graph-container">
           <section className='main__wrapper__section'>
             <BarChartWeight />
-            <Objectifs />
+            <div className='main__wrapper__section__trois-cubes'>
+              <Objectifs />
+              <RadarPerformance />
+              <KeyPerformanceIndice />
+            </div>
           </section>
-          <aside className='aside'>
+          <aside className='main__wrapper__graph-container__aside'>
             <EnergieKeyData 
             icon={caloriesIcon}
             infoEnergie={`${data.keyData.calorieCount/1000}kCal`}

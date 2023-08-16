@@ -8,8 +8,11 @@ import iconCaloriesBrulees from '../../../assets/barChart-icons/Oval-clories-bru
 const BarChartWeight = () => {
 
   const {userId} = useParams()
-  const data = USER_ACTIVITY.find((el) => el.id == userId)
-  console.log(data.sessions);
+  const data = USER_ACTIVITY.find((user) => user.id == userId)
+  
+  if(!data) {
+    return <div>Aucun utilisateur trouvé</div>
+  }
 
   let dataSessions = data.sessions.map((el) => {
     return `${el.kilogram}`

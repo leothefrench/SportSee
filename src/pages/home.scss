@@ -6,5 +6,21 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        width: 100%;
+
+        &__title {
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 10px;
+            background-color: rgb(187, 159, 159);
+            margin-bottom: 1rem;
+        }
+
+        &__linkUser {
+            padding: 10px 50px;
+            text-decoration: none;
+            border-radius: 10px;
+            background-color: aqua;
+        }
     }
 }
