@@ -1,5 +1,5 @@
 import './objectifs.scss'
-import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
 import { USER_AVERAGE_SESSIONS } from '../../mock/data'
 import { useParams } from 'react-router-dom';
 
@@ -9,53 +9,49 @@ const Objectifs = () => {
   const data = USER_AVERAGE_SESSIONS.find((el) => el.id == userId)
   console.log(data.sessions);
 
-  const dataDay = data.sessions.map((data) => {
+  const dataDay = data.sessions.map((session) => {
 
-    switch(data.day) {
+    switch(session.day) {
       case 1:
-        return {...data, day: 'L'}
+        return {...session, day: 'L'}
       case 2: 
-        return {...data, day: 'M'}
+        return {...session, day: 'M'}
       case 3: 
-        return {...data, day: 'M'}
+        return {...session, day: 'M'}
       case 4: 
-        return {...data, day: 'J'}
+        return {...session, day: 'J'}
       case 5: 
-        return {...data, day: 'V'}
+        return {...session, day: 'V'}
       case 6: 
-        return {...data, day: 'S'}
+        return {...session, day: 'S'}
       case 7: 
-        return {...data, day: 'D'}
+        return {...session, day: 'D'}
+      default:
+        return session
     }
+
   })
 
   return (
     <div className="container-line-graph">
       <h3 className="container-line-graph__title">Durée moyenne des sessions</h3>
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height={256}>
         <LineChart
-          width={400}
-          height={200}
           data={dataDay}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5
-          }} 
+          margin={{top: 5, right: 30, left: 20, bottom: 5 }} 
           strokeWidth={1}
         >
           {/* Axes */}
           <XAxis
             dataKey='day' 
-            orientation='bottom' 
             type='category' 
-            padding={{ left: 10, right: 10 }}  
+            padding={{ left: 5, right: 5, top: 5}}  
+            orientation="bottom"
             tickLine={true} 
-            ticks={{fontSize: 12, stroke:'#fff'}}/>
+          />
           <YAxis />
           <Tooltip />
-          <Line type='monotone' dataKey={dataDay} stroke='#ffffff' strokeWidth={2} dot={false}/ >
+          <Line type='natural' dataKey='sessionsLength' stroke='red' strokeWidth={2} dot={true}/ >
         </LineChart>
       </ResponsiveContainer>
     </div>
