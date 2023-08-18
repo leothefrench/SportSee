@@ -6,10 +6,10 @@ import { useParams } from 'react-router-dom';
 const Objectifs = () => {
 
   const { userId } = useParams()
-  const data = USER_AVERAGE_SESSIONS.find((el) => el.id == userId)
-  console.log(data.sessions);
+  const userData = USER_AVERAGE_SESSIONS.find(el => el.id == userId)
+  console.log(userData.sessions);
 
-  const dataDay = data.sessions.map((session) => {
+  const dataDay = userData.sessions.map((session) => {
 
     switch(session.day) {
       case 1:
@@ -35,23 +35,24 @@ const Objectifs = () => {
   return (
     <div className="container-line-graph">
       <h3 className="container-line-graph__title">Durée moyenne des sessions</h3>
-      <ResponsiveContainer width="100%" height={256}>
+      <ResponsiveContainer width="100%" height="75%">
         <LineChart
           data={dataDay}
-          margin={{top: 5, right: 30, left: 20, bottom: 5 }} 
+          margin={{top: 5, right: 5, left: 5, bottom: 5 }} 
           strokeWidth={1}
         >
           {/* Axes */}
           <XAxis
             dataKey='day' 
             type='category' 
-            padding={{ left: 5, right: 5, top: 5}}  
-            orientation="bottom"
-            tickLine={true} 
+            padding={{ left: 5, right: 5 }}  
+            tickLine={false} 
+            stroke='red'
+            tick={{ fontSize: 13, stroke: "green", opacity: 0.8}}
           />
           <YAxis />
           <Tooltip />
-          <Line type='natural' dataKey='sessionsLength' stroke='red' strokeWidth={2} dot={true}/ >
+          <Line type='monotone' dataKey='sessionLength' strokeWidth={2} connectNulls={true} dot={false} stroke="rgba(255, 255, 255, 0.7)"/ >
         </LineChart>
       </ResponsiveContainer>
     </div>

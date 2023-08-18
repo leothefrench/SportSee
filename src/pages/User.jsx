@@ -30,7 +30,7 @@ const User = () => {
             <div className='main__wrapper__section__trois-cubes'>
               <Objectifs />
               <RadarPerformance />
-              <KeyPerformanceIndice />
+              <KeyPerformanceIndice data={data} />
             </div>
           </section>
           <aside className='main__wrapper__graph-container__aside'>

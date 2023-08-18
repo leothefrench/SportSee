@@ -25,9 +25,9 @@ const BarChartWeight = () => {
   }
 
   return (
-    <div>
-      <div>
-        <h1>Activité quotidienne</h1>
+    <div className='legend'>
+      <div className='legend__barChart'>
+        <h1 className='legend__barChart__title'>Activité quotidienne</h1>
         <Legend>
           <div className='legend-poids'>
             <span>{iconWeight}</span>
