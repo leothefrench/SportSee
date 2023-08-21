@@ -1,46 +1,39 @@
-import { PieChart, Pie, Cell, Tooltip } from 'recharts';
-import { USER_MAIN_DATA } from '../../mock/data'
-import { useParams } from 'react-router-dom';
 
-const COLORS = ['#8884d8', '#82ca9d'];
+import './kpi.scss'
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
-export const KeyPerformanceIndice = () => {
-  const { userId } = useParams(); // Récupère le paramètre d'URL
+export const KeyPerformanceIndice = ({data}) => {
 
-  // Trouve l'utilisateur correspondant à l'ID fourni dans les paramètres d'URL
-  const selectedUser = USER_MAIN_DATA.find(user => user.d == userId);
-  console.log(selectedUser)
-
-  if (!selectedUser) {
-    return <div>Utilisateur non trouvé</div>;
-  }
-
-  const { firstName, lastName } = selectedUser.userInfos;
-  const { todayScore } = selectedUser;
-
-  const data = [
-    { name: `${firstName} ${lastName}`, value: todayScore },
-    { name: 'Autres', value: 1 - todayScore } // Calcul du score restant
-  ];
+  const score = [
+    { value: data.todayScore || data.score},
+    { value: 1 - data.todayScore || data.score}
+  ]
 
   return (
-    <PieChart width={400} height={250}>
-      <Pie
-        dataKey="value"
-        isAnimationActive={false}
-        data={data}
-        cx="50%"
-        cy="50%"
-        outerRadius={80}
-        innerRadius={60}
-        fill="#8884d8"
-        label={(entry) => `${entry.name}: ${entry.value.toFixed(2)}`}
-      >
-        {data.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-        ))}
-      </Pie>
-      <Tooltip />
-    </PieChart>
+    <div className='container-keyPerformanceIndice'>
+      <h3 className='container-keyPerformanceIndice__title-score'>Score</h3>
+      <ResponsiveContainer width='100%' height='100%'>
+        <PieChart>
+          <Pie
+            dataKey='value'
+            isAnimationActive={false}
+            data={score}
+            outerRadius={85}
+            innerRadius={70}
+            // fill="#8884d8"
+          >
+            {score.map((ele, index) => 
+            index === 0 ? (<Cell key={`cell-${index}`} fill='#ff0000' />) :
+                          (<Cell key={`cell-${ele}`} fill='#fbfbfb' />)
+            )}
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer>
+      <div className='container-keyPerformanceIndice__score-container'>
+        <span className='container-keyPerformanceIndice__score-container__score'>{score[0].value *100}%<br /></span>
+        de votre <br/>
+        objectif
+        </div>
+    </div>
   );
 };

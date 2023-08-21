@@ -10,7 +10,7 @@ const RadarPerformance = () => {
 
   return (
     // Responsive Conteneur pour l'adaptation au container parent
-    <ResponsiveContainer width="50%" height={256}>
+    <ResponsiveContainer width={258} height={263}>
       {/* Graphique Radar - outerRadius pour le rayon du cercle qui contient le radar & data -> les données que l'on fournit */}
       <RadarChart outerRadius={100} data={radarData}>
         {/*  Grille de fond */}

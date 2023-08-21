@@ -1,0 +1,26 @@
+.container-keyPerformanceIndice {
+    width: 258px;
+    height: 263px;
+    position: relative;
+    
+    &__title-score {
+        padding-top: 24px;
+        padding-left: 30px;
+    }
+
+    &__score-container{
+        position: absolute;
+        top: 50%;
+        left: 40%;
+
+        &__score {
+            color: #282D30;
+            text-align: center;
+            font-family: Roboto;
+            font-size: 26px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 26px; /* 100% */
+        }
+    }
+}

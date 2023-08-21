@@ -7,7 +7,6 @@ const Objectifs = () => {
 
   const { userId } = useParams()
   const userData = USER_AVERAGE_SESSIONS.find(el => el.id == userId)
-  console.log(userData.sessions);
 
   const dataDay = userData.sessions.map((session) => {
 
@@ -29,7 +28,6 @@ const Objectifs = () => {
       default:
         return session
     }
-
   })
 
   return (
@@ -48,9 +46,10 @@ const Objectifs = () => {
             padding={{ left: 5, right: 5 }}  
             tickLine={false} 
             stroke='red'
-            tick={{ fontSize: 13, stroke: "green", opacity: 0.8}}
+            tick={{ fontSize: 12, stroke: "white", opacity: 0.8}}
           />
           <YAxis />
+          {/* Infobulle */}
           <Tooltip />
           <Line type='monotone' dataKey='sessionLength' strokeWidth={2} connectNulls={true} dot={false} stroke="rgba(255, 255, 255, 0.7)"/ >
         </LineChart>
@@ -59,4 +58,6 @@ const Objectifs = () => {
 
   )
 }
+
 export default Objectifs
+

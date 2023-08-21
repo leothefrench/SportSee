@@ -7,6 +7,7 @@
         width: 80%;
         margin: auto;
         margin-top: 3rem;
+        margin-bottom: 5rem;
 
         &__section {
             width: 80%;
@@ -14,6 +15,7 @@
             &__trois-cubes {
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
             }
         }
     }
