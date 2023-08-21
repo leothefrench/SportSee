@@ -1,0 +1,16 @@
+.toolType-container {
+    width: 39px;
+    height: 63px;
+    background-color: #E60000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__text {
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 24px;
+        color: #fff;
+        margin-top: 7px;
+    }
+}

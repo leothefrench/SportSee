@@ -1,12 +1,33 @@
 .legend {
     margin-bottom: 73px;
+
+    &__barChart {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &__title {
+            color: #20253A;
+            font-family: Roboto;
+            font-size: 1.2rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 24px;
+            margin-bottom: 3.8rem;
+        }
+
+        &__icons {
+            display: flex;
+
+            &__bullet > img {
+                padding-left: 32px;
+            }
+        }
+
+        &__icons__bullet__text {
+            color: #74798C;
+            padding-left: 12px;
+        }
+    }
 }
 
-.legend__barChart__title {
-    color: #20253A;
-    font-family: Roboto;
-    font-size: 1.2rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px;
-    }
