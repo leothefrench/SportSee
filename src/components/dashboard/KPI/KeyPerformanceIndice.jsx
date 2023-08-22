@@ -1,4 +1,3 @@
-
 import './kpi.scss'
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
@@ -20,7 +19,7 @@ export const KeyPerformanceIndice = ({data}) => {
             data={score}
             outerRadius={85}
             innerRadius={70}
-            // fill="#8884d8"
+            cornerRadius={10}
           >
             {score.map((ele, index) => 
             index === 0 ? (<Cell key={`cell-${index}`} fill='#ff0000' />) :
@@ -30,10 +29,11 @@ export const KeyPerformanceIndice = ({data}) => {
         </PieChart>
       </ResponsiveContainer>
       <div className='container-keyPerformanceIndice__score-container'>
-        <span className='container-keyPerformanceIndice__score-container__score'>{score[0].value *100}%<br /></span>
-        de votre <br/>
-        objectif
-        </div>
+        <span className='container-keyPerformanceIndice__score-container__score'>{score[0].value *100}% <br />
+        </span>
+        <span className='container-keyPerformanceIndice__score-container__text'>de votre </span><br/>
+        <span className='container-keyPerformanceIndice__score-container__text'>objectif</span>
+      </div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import './user.scss'
 import { useParams } from 'react-router-dom'
-import { USER_MAIN_DATA, USER_AVERAGE_SESSIONS } from '../components/mock/data'
+import { USER_MAIN_DATA } from '../components/mock/data'
 import SideBar from '../components/sidebar/Sidebar'
 import HeaderDashboard from '../components/dashboard/headerDashboard/HeaderDashboard'
 import EnergieKeyData from '../components/dashboard/energie/EnergieKeyData'
@@ -16,7 +16,7 @@ import { KeyPerformanceIndice } from '../components/dashboard/KPI/KeyPerformance
 const User = () => {
 
   const {id} = useParams()
-  const data = USER_MAIN_DATA.find((el) => el.id == id)
+  const data = USER_MAIN_DATA.find((el) => el.id === +id)
   console.log(data);
 
   return (

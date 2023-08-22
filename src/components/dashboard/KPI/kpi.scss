@@ -2,6 +2,10 @@
     width: 258px;
     height: 263px;
     position: relative;
+
+    border-radius: 5px;
+    background: #FBFBFB;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.02);
     
     &__title-score {
         padding-top: 24px;
@@ -20,7 +24,17 @@
             font-size: 26px;
             font-style: normal;
             font-weight: 700;
-            line-height: 26px; /* 100% */
+            line-height: 26px;
+        }
+
+        &__text {
+            color: #74798C;
+            font-family: Roboto;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 26px;
         }
     }
 }
+
