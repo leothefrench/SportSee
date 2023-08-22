@@ -38,7 +38,7 @@ const User = () => {
             icon={caloriesIcon}
             infoEnergie={`${data.keyData.calorieCount/1000}kCal`}
             text='Calories'
-            />
+            /> 
             <EnergieKeyData 
             icon={proteinIcon}
             infoEnergie={`${data.keyData.proteinCount}g`}

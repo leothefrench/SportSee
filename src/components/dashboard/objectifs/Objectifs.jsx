@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 const Objectifs = () => {
 
   const { userId } = useParams()
-  const userData = USER_AVERAGE_SESSIONS.find(el => el.id == userId)
+  const userData = USER_AVERAGE_SESSIONS.find(el => el.id == userId) 
 
   const dataDay = userData.sessions.map((session) => {
 

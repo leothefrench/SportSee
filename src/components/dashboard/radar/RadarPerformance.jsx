@@ -16,7 +16,7 @@ const RadarPerformance = () => {
       <RadarChart outerRadius={80} data={radarData}>
         {/*  Grille de fond */}
         <PolarGrid />
-        {/* Place les kinds autour du cercle contenant le radar */}
+        {/* Place les kinds cardio,energy, etc.. autour du cercle contenant le radar */}
         <PolarAngleAxis dataKey="kind" / >
         <Radar dataKey="value" stroke="#000" fill="rgba(255, 1, 1, 0.70)" fillOpacity={0.6} />
       </RadarChart>

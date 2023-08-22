@@ -12,7 +12,8 @@
             padding: 10px;
             border: 1px solid black;
             border-radius: 10px;
-            background-color: rgb(187, 159, 159);
+            background-color: #000;
+            color: #fff;
             margin-bottom: 1rem;
         }
 
@@ -20,7 +21,11 @@
             padding: 10px 50px;
             text-decoration: none;
             border-radius: 10px;
-            background-color: aqua;
+            background-color: rgb(13, 15, 15);
+            width: 240px;
+            text-align: center;
+            color: white;
+            margin-bottom: 10px;
         }
     }
 }

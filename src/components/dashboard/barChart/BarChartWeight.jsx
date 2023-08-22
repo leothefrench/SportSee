@@ -16,12 +16,13 @@ const BarChartWeight = () => {
   }
 
   const dataSessions = data.sessions.map((el, index) => {
+    
     return {
       day: index + 1,
       kilogram: el.kilogram,
       calories: el.calories
     }
-  })
+  }) 
 
   return (
     <div className='legend'>
@@ -38,7 +39,7 @@ const BarChartWeight = () => {
           </div>
         </div>
       </div>
-      <ResponsiveContainer height={200}>
+      <ResponsiveContainer height={320}>
         <BarChart data={dataSessions} barGap={8} barCategoryGap={1} >
           <CartesianGrid strokeDasharray='1 1' vertical={false} />
           <XAxis dataKey='day' tickLine={false} tick={{fontSize: 14}} dy={15} stroke='1 1' />

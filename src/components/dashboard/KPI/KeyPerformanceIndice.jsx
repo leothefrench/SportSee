@@ -5,7 +5,7 @@ export const KeyPerformanceIndice = ({data}) => {
 
   const score = [
     { value: data.todayScore || data.score},
-    { value: 1 - data.todayScore || data.score}
+    { value: 1 - data.todayScore || data.score} 
   ]
 
   return (
@@ -15,7 +15,7 @@ export const KeyPerformanceIndice = ({data}) => {
         <PieChart>
           <Pie
             dataKey='value'
-            isAnimationActive={false}
+            isAnimationActive={true}
             data={score}
             outerRadius={85}
             innerRadius={70}
