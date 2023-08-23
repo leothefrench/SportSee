@@ -1,30 +1,28 @@
+@import '../../../styles/variables';
+
 .container-line-graph {
     display: flex;
     flex-direction: column;
     border-radius: 5px;
     background: #F00;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.02);
-    width: 258px;
+    width: 16rem; // 258px;
     height: 263px;
 
 
     &__title {
-        width: 147px;
-        flex-shrink: 0;
-        color: #FFF;
-        font-family: Roboto;
-        font-size: .9rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 24px; 
+        @include text-typo;
+        width: 9.2rem;
+        flex-shrink: 0;      
+        font-size: .95rem;
         opacity: 0.504;
         margin-top: 29px;
-        margin-left: 34px;
+        margin-left: 2rem; // 34px;
     }
 }
 
 .custom-tooltip {
-    width: 39px;
+    width: 2.4rem; //39px;
     height: 25px;
     flex-shrink: 0;
     background-color: #fff;

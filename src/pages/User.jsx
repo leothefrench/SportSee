@@ -16,7 +16,7 @@ import { KeyPerformanceIndice } from '../components/dashboard/KPI/KeyPerformance
 const User = () => {
 
   const {id} = useParams()
-  const data = USER_MAIN_DATA.find((el) => el.id === +id)
+  const data = USER_MAIN_DATA.find((el) => el.id == id)
   console.log(data);
 
   return (

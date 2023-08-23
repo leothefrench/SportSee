@@ -1,15 +1,19 @@
+@import '../../../styles/variables';
+
 .container-keyPerformanceIndice {
-    width: 258px;
+    width: 16rem;  // 258px;
     height: 263px;
     position: relative;
-
     border-radius: 5px;
     background: #FBFBFB;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.02);
     
     &__title-score {
         padding-top: 24px;
-        padding-left: 30px;
+        padding-left: 1.875rem; // 30px;
+        @include text-typo;
+        color: #20253A;
+        font-size: 0.938rem;
     }
 
     &__score-container{
@@ -18,23 +22,19 @@
         left: 40%;
 
         &__score {
+            @include text-typo;
             color: #282D30;
-            text-align: center;
-            font-family: Roboto;
-            font-size: 26px;
-            font-style: normal;
+            text-align: center;        
+            font-size: 1.625rem;          
             font-weight: 700;
-            line-height: 26px;
+            line-height: 1.625rem;
         }
 
         &__text {
-            color: #74798C;
-            font-family: Roboto;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 26px;
+            @include text-typo;
+            color: #74798C;     
+            font-size: 1rem;  
+            line-height: 1.625rem;
         }
     }
 }
-

@@ -1,9 +1,10 @@
+@import '../../../styles/variables';
+
 .keyData {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    width: 258px;
+    width: 16rem; // 258px
     height: 124px;
     flex-shrink: 0;
 
@@ -16,12 +17,17 @@
         flex-direction: column;
 
         &__number-energie {
+            @include text-typo;
             color: #282D30;
-            font-family: Roboto;
             font-size: 1.2rem;
-            font-style: normal;
             font-weight: 700;
-            line-height: 24px;
+        }
+
+        &__text-energie {
+            @include text-typo;
+            color: #74798C;  
+            font-size: 14px;
+            font-style: normal;
         }
     }
 }

@@ -36,7 +36,7 @@ const Objectifs = () => {
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={dataDay}
-          margin={{top: 5, right: 5, left: 5, bottom: 5 }} 
+          margin={{top: 5, right: 5, left: 5, bottom: 16}} 
           strokeWidth={1}
         >
           <XAxis

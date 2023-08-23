@@ -18,7 +18,7 @@ export const KeyPerformanceIndice = ({data}) => {
             isAnimationActive={true}
             data={score}
             outerRadius={85}
-            innerRadius={70}
+            innerRadius={75}
             cornerRadius={10}
           >
             {score.map((ele, index) => 

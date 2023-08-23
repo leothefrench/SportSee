@@ -12,12 +12,9 @@ const RadarPerformance = () => {
   return (
     <div className="container-radar">
     <ResponsiveContainer width={258} height={263}>
-      {/* Graphique Radar - outerRadius pour le rayon du cercle qui contient le radar & data -> les données que l'on fournit */}
       <RadarChart outerRadius={80} data={radarData}>
-        {/*  Grille de fond */}
-        <PolarGrid />
-        {/* Place les kinds cardio,energy, etc.. autour du cercle contenant le radar */}
-        <PolarAngleAxis dataKey="kind" / >
+        <PolarGrid gridType='polygon' radialLines={false} />
+        <PolarAngleAxis dataKey="kind"  tick={{ fill: "white", fontSize: 12 }} />
         <Radar dataKey="value" stroke="#000" fill="rgba(255, 1, 1, 0.70)" fillOpacity={0.6} />
       </RadarChart>
     </ResponsiveContainer>
