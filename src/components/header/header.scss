@@ -1,7 +1,6 @@
 @import '../../styles/variables';
 
 .header {
-    width: 90rem; // 1440px
     height: 91px;
     @include text-typo;
     display: flex;

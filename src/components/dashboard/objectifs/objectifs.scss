@@ -9,7 +9,6 @@
     width: 16rem; // 258px;
     height: 263px;
 
-
     &__title {
         @include text-typo;
         width: 9.2rem;
@@ -21,13 +20,17 @@
     }
 }
 
-.custom-tooltip {
-    width: 2.4rem; //39px;
-    height: 25px;
-    flex-shrink: 0;
-    background-color: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.2)
+.custom-reference-area {
+    fill: yellow;
 }
+
+// .custom-tooltip {
+//     width: 2.4rem; //39px;
+//     height: 25px;
+//     flex-shrink: 0;
+//     background-color: #fff;
+//     border: 1px solid rgba(0, 0, 0, 0.2)
+// }
 
 .custom-tooltip__minutes {
     background-color: #fff;

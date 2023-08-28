@@ -1,12 +1,15 @@
 export class Session {
-    constructor(sessions) {
-        this.sessions = sessions || [];
+    constructor(session) {
+        this.session = session;
     }
 
     format() {
-        return this.sessions.map((el, index) => {
+        if(!this.session) {
+            return []
+        }
+        return this.session.map((el, index) => {
             return {
-              day: index + 1,
+              day: index + 1, // On récépére l'index de l'élement & on ajoute 1
               kilogram: el.kilogram,
               calories: el.calories
             }

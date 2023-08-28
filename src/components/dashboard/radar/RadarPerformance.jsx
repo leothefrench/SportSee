@@ -11,7 +11,7 @@ const RadarPerformance = () => {
 
   return (
     <div className="container-radar">
-    <ResponsiveContainer width={258} height={263}>
+    <ResponsiveContainer width="100%" height="100%">
       <RadarChart outerRadius={80} data={radarData}>
         <PolarGrid gridType='polygon' radialLines={false} />
         <PolarAngleAxis dataKey="kind"  tick={{ fill: "white", fontSize: 12 }} />
@@ -19,7 +19,6 @@ const RadarPerformance = () => {
       </RadarChart>
     </ResponsiveContainer>
     </div>
-
   );
 };
 

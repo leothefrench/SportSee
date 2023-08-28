@@ -5,38 +5,30 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import { ToolType } from './ToolType';
 import iconWeight from '../../../assets/barChart-icons/Oval-poids-icon.svg'
 import iconCaloriesBrulees from '../../../assets/barChart-icons/Oval-clories-brulees-icon.svg'
+import { getUserActivity } from '../../../api/call'
 import { useState, useEffect } from 'react';
-import { getUserAverageSessions } from '../../../api/call';
 
 const BarChartWeight = () => {
+ 
+  const { id } = useParams()
 
-  const {userId} = useParams()
-  // const data = USER_ACTIVITY.find((user) => user.id === userId)
+  console.log("userId:", id); // Check The id
 
-  const [sessionData, setSessionData] = useState([])
+  const [userData, setUserData] = useState([])
 
-  useEffect(() => {
-    getUserAverageSessions(userId, 'getUserActivity')
-    .then((data) => setSessionData(data))
-    .catch((error) => console.log('An error occurred:', error));
-  }, [userId]);
+   useEffect(() => {
+    getUserActivity(id)
+      .then((data) => {
+        setUserData(data.sessions);
+      })
+      .catch((error) => {
+        console.log('An error occurred:', error);
+      });
+  }, [id]);
 
-  if(!sessionData || sessionData.length === 0) {
-    return <div>No data find for session</div>
-  } 
-  
-  // if(!data) {
-  //   return <div>Aucun utilisateur trouvé</div>
-  // }
-
-  // const dataSessions = data.sessions.map((el, index) => {
-    
-  //   return {
-  //     day: index + 1,
-  //     kilogram: el.kilogram,
-  //     calories: el.calories
-  //   }
-  // }) 
+  if(!userData || userData.length === 0) {
+    return <div>Aucun utilisateur trouvé</div>
+  }
 
   return (
     <div className='legend'>
@@ -54,7 +46,7 @@ const BarChartWeight = () => {
         </div>
       </div>
       <ResponsiveContainer height={320}>
-        <BarChart data={sessionData} barGap={8} barCategoryGap={1} >
+        <BarChart data={userData} barGap={8} barCategoryGap={1} >
           <CartesianGrid strokeDasharray='1 1' vertical={false} />
           <XAxis dataKey='day' tickLine={false} tick={{fontSize: 14}} dy={15} stroke='1 1' />
           <YAxis yAxisId='kilogram' dataKey='kilogram' type='number' domain={['dataMin - 2', 'dataMax + 1']} tickCount="4" axisLine={false} orientation="right" tickLine={false} tick={{fontSize: 14}} dx={15} />
