@@ -1,13 +1,29 @@
 import './radarPerformance.scss'
 import { RadarChart, PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer } from 'recharts';
-import { USER_PERFORMANCE } from '../../mock/data'
-
+// import { USER_PERFORMANCE } from '../../mock/data'
+import { getUserPerformance } from '../../../api/call'
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 const RadarPerformance = () => {
-  const radarData = USER_PERFORMANCE[0].data.map(item => ({
-    kind: USER_PERFORMANCE[0].kind[item.kind],
-    value: item.value
-  }));
+
+  const { id } = useParams()
+  const [radarData, setRadarData] = useState([])
+
+  useEffect(() => {
+    getUserPerformance(id)
+      .then((data) => {
+        setRadarData(data);
+      })
+      .catch((error) => {
+        console.log('An error occurred:', error);
+      });
+  }, [id]);
+
+  if(!radarData || radarData.length === 0) {
+    // console.log(radarData); 
+    return <div>Aucun utilisateur trouvé</div>
+  }
 
   return (
     <div className="container-radar">
@@ -22,4 +38,4 @@ const RadarPerformance = () => {
   );
 };
 
-export default RadarPerformance
+export default RadarPerformance 

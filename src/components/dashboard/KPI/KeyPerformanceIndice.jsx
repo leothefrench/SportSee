@@ -1,12 +1,33 @@
 import './kpi.scss'
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { useParams } from 'react-router-dom';
+import {getUserInformation} from '../../../api/call'
+import { useState, useEffect } from 'react';
 
 export const KeyPerformanceIndice = ({data}) => {
 
-  const score = [
-    { value: data.todayScore || data.score},
-    { value: 1 - data.todayScore || data.score} 
-  ]
+  const { id } = useParams()
+  const [score, setScore] = useState([])
+
+  useEffect(() => {
+    getUserInformation(id)
+    .then((data) => {
+      setScore(data)
+    })
+    .catch((error) => {
+      console.log('An error occurred:', error);
+    });
+  }, [id]);
+
+  if(!score || score.length === 0) {
+    console.log(score); 
+    return <div>Aucun utilisateur trouvé</div>
+  }
+  console.log('Score:', score); 
+  // const score = [
+  //   { value: data.todayScore || data.score},
+  //   { value: 1 - data.todayScore || data.score} 
+  // ]
 
   return (
     <div className='container-keyPerformanceIndice'>

@@ -6,27 +6,26 @@ import { ToolType } from './ToolType';
 import iconWeight from '../../../assets/barChart-icons/Oval-poids-icon.svg'
 import iconCaloriesBrulees from '../../../assets/barChart-icons/Oval-clories-brulees-icon.svg'
 import { getUserActivity } from '../../../api/call'
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'; 
 
 const BarChartWeight = () => {
  
   const { id } = useParams()
-
-  console.log("userId:", id); // Check The id
-
+  // console.log("userId:", id)
   const [userData, setUserData] = useState([])
 
    useEffect(() => {
     getUserActivity(id)
       .then((data) => {
-        setUserData(data.sessions);
+        setUserData(data);
       })
       .catch((error) => {
         console.log('An error occurred:', error);
-      });
+      }); 
   }, [id]);
 
   if(!userData || userData.length === 0) {
+    // console.log(userData); 
     return <div>Aucun utilisateur trouvé</div>
   }
 

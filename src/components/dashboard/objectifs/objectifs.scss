@@ -8,6 +8,7 @@
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.02);
     width: 16rem; // 258px;
     height: 263px;
+    position: relative;
 
     &__title {
         @include text-typo;
@@ -17,20 +18,9 @@
         opacity: 0.504;
         margin-top: 29px;
         margin-left: 2rem; // 34px;
+        position: absolute;
     }
 }
-
-.custom-reference-area {
-    fill: yellow;
-}
-
-// .custom-tooltip {
-//     width: 2.4rem; //39px;
-//     height: 25px;
-//     flex-shrink: 0;
-//     background-color: #fff;
-//     border: 1px solid rgba(0, 0, 0, 0.2)
-// }
 
 .custom-tooltip__minutes {
     background-color: #fff;
@@ -41,4 +31,20 @@
     font-style: normal;
     font-weight: 500;
     line-height: 24px; /* 300% */
+}
+
+.tooltip {
+    width: 39px;
+    height: 25px;
+    background-color: #fff;
+
+    p {
+        color: #000;
+        text-align: center;
+        font-family: Roboto;
+        font-size: 8px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px;
+    }
 }

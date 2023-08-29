@@ -9,7 +9,7 @@ export class Session {
         }
         return this.session.map((el, index) => {
             return {
-              day: index + 1, // On récépére l'index de l'élement & on ajoute 1
+              day: index + 1,
               kilogram: el.kilogram,
               calories: el.calories
             }
