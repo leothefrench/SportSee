@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import {getUserInformation} from '../../../api/call'
 import { useState, useEffect } from 'react';
 
-export const KeyPerformanceIndice = ({data}) => {
+export const KeyPerformanceIndice = () => {
 
   const { id } = useParams()
   const [score, setScore] = useState([])
@@ -20,14 +20,8 @@ export const KeyPerformanceIndice = ({data}) => {
   }, [id]);
 
   if(!score || score.length === 0) {
-    console.log(score); 
     return <div>Aucun utilisateur trouvé</div>
   }
-  console.log('Score:', score); 
-  // const score = [
-  //   { value: data.todayScore || data.score},
-  //   { value: 1 - data.todayScore || data.score} 
-  // ]
 
   return (
     <div className='container-keyPerformanceIndice'>

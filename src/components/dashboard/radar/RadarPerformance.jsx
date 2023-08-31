@@ -21,7 +21,6 @@ const RadarPerformance = () => {
   }, [id]);
 
   if(!radarData || radarData.length === 0) {
-    // console.log(radarData); 
     return <div>Aucun utilisateur trouvé</div>
   }
 
@@ -30,7 +29,7 @@ const RadarPerformance = () => {
     <ResponsiveContainer width="100%" height="100%">
       <RadarChart outerRadius={80} data={radarData}>
         <PolarGrid gridType='polygon' radialLines={false} />
-        <PolarAngleAxis dataKey="kind"  tick={{ fill: "white", fontSize: 12 }} />
+        <PolarAngleAxis className='custom-axis' dataKey="kind"  tick={{ fill: "white", fontSize: 12 }} />
         <Radar dataKey="value" stroke="#000" fill="rgba(255, 1, 1, 0.70)" fillOpacity={0.6} />
       </RadarChart>
     </ResponsiveContainer>

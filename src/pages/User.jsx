@@ -1,6 +1,8 @@
 import './user.scss'
 import { useParams } from 'react-router-dom'
-import { USER_MAIN_DATA } from '../components/mock/data'
+import { useState, useEffect } from 'react'
+import {getAllDataUser} from '../api/call'
+// import { USER_MAIN_DATA } from '../components/mock/data'
 import SideBar from '../components/sidebar/Sidebar'
 import HeaderDashboard from '../components/dashboard/headerDashboard/HeaderDashboard'
 import EnergieKeyData from '../components/dashboard/energie/EnergieKeyData'
@@ -16,8 +18,23 @@ import { KeyPerformanceIndice } from '../components/dashboard/KPI/KeyPerformance
 const User = () => {
 
   const {id} = useParams()
-  const data = USER_MAIN_DATA.find((el) => el.id == id)
-  console.log(data);
+  // const data = USER_MAIN_DATA.find((el) => el.id == id)
+  const [data, setData] = useState(null)
+
+ useEffect(() => {
+  getAllDataUser(id)
+    .then((data) => {
+      setData(data);
+      console.log(data)
+    })
+    .catch((error) => {
+      console.log('An error occurred:', error);
+    }); 
+}, [id]);
+
+if(!data || data.length === 0) {
+  return <div>Aucun utilisateur trouvé</div>
+}
 
   return (
     <main className='main'>
@@ -30,7 +47,7 @@ const User = () => {
             <div className='main__wrapper__section__trois-cubes'>
               <Objectifs />
               <RadarPerformance />
-              <KeyPerformanceIndice data={data} />
+              <KeyPerformanceIndice />
             </div>
           </section>
           <aside className='main__wrapper__graph-container__aside'>

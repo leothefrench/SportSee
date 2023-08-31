@@ -11,7 +11,6 @@ import { useState, useEffect } from 'react';
 const BarChartWeight = () => {
  
   const { id } = useParams()
-  // console.log("userId:", id)
   const [userData, setUserData] = useState([])
 
    useEffect(() => {
@@ -25,7 +24,6 @@ const BarChartWeight = () => {
   }, [id]);
 
   if(!userData || userData.length === 0) {
-    // console.log(userData); 
     return <div>Aucun utilisateur trouvé</div>
   }
 

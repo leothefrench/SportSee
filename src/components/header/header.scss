@@ -7,6 +7,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: #020203;
+    width: 100%;
 
     &__logo {
         width: 11rem; // 178px;
@@ -17,5 +18,15 @@
         color: #fff;
         padding-right: 9rem;
         text-decoration: none;
+    }
+
+    @media screen and (max-width: 1440px) {
+        &__navbar__link {
+            padding-right: 5rem;  
+        }
+
+        &__logo + .header__navbar__link {
+            margin-left: 145px;
+        }
     }
 }

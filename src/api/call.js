@@ -6,6 +6,21 @@ import { RadarData } from "../models/radarData";
 
 const apiURL = 'http://localhost:3000'
 
+// USER MAIN DATA - Retrieves information from user
+export const getAllDataUser = async (userId) => {
+  return fetch(`${apiURL}/user/${userId}`)
+    .then((res) => {
+      if(!res.ok) {
+        throw new Error(`HTTP error ! Status: ${res.status}`)
+      }
+      return res.json()
+    })
+    .then((data) => {
+      // console.log(data.data);
+      return data.data;
+    })
+}
+
 // USER MAIN DATA - retrieves information from a user
 export const getUserInformation = async (userId) => {
     return fetch(`${apiURL}/user/${userId}`)
@@ -56,7 +71,7 @@ export const getUserAverageSessions = async (userId) => {
         return res.json()
       })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         const dataDay = new DataDay(data.data);
         return dataDay.format(); 
       })

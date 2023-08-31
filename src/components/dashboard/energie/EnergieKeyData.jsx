@@ -1,6 +1,26 @@
 import './energie.keyData.scss'
+// import { useParams } from 'react-router-dom';
+// import { useState, useEffect } from 'react';
+// import { getUserInformation } from '../../../api/call';
 
 const EnergieKeyData = ({icon, infoEnergie, text}) => {
+
+  // const { id } = useParams()
+  // const [keyData, setKeyData] = useState([])
+
+  // useEffect(() => {
+  //   getUserInformation(id)
+  //     .then((data) => {
+  //       setKeyData(data);
+  //     })
+  //     .catch((error) => {
+  //       console.log('An error occurred:', error);
+  //     }); 
+  // }, [id]);
+
+  // if(!keyData || keyData.length === 0) {
+  //   return <div>Aucun utilisateur trouvé</div>
+  // }
 
   return (
     <div className='keyData'>

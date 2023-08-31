@@ -194,7 +194,7 @@ export const USER_PERFORMANCE = [
             4: 'strength',
             5: 'speed',
             6: 'intensity'
-        },
+        }, 
         data: [
             {
                 value: 80,
