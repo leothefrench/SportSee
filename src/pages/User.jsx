@@ -25,7 +25,7 @@ const User = () => {
   getAllDataUser(id)
     .then((data) => {
       setData(data);
-      console.log(data)
+      // console.log(data)
     })
     .catch((error) => {
       console.log('An error occurred:', error);
