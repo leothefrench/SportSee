@@ -2,7 +2,7 @@ import './user.scss'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import {getAllDataUser} from '../api/call'
-// import { USER_MAIN_DATA } from '../components/mock/data'
+import { USER_MAIN_DATA } from '../components/mock/data'
 import SideBar from '../components/sidebar/Sidebar'
 import HeaderDashboard from '../components/dashboard/headerDashboard/HeaderDashboard'
 import EnergieKeyData from '../components/dashboard/energie/EnergieKeyData'
@@ -14,27 +14,40 @@ import BarChartWeight from '../components/dashboard/barChart/BarChartWeight'
 import Objectifs from '../components/dashboard/objectifs/Objectifs'
 import RadarPerformance from '../components/dashboard/radar/RadarPerformance'
 import { KeyPerformanceIndice } from '../components/dashboard/KPI/KeyPerformanceIndice'
+import { getData } from '../service/dataSwitch'
 
-const User = () => {
+const User = () => { 
 
   const {id} = useParams()
   // const data = USER_MAIN_DATA.find((el) => el.id == id)
   const [data, setData] = useState(null)
 
  useEffect(() => {
-  getAllDataUser(id)
-    .then((data) => {
-      setData(data);
-      // console.log(data)
-    })
-    .catch((error) => {
-      console.log('An error occurred:', error);
-    }); 
-}, [id]);
 
-if(!data || data.length === 0) {
-  return <div>Aucun utilisateur trouvé</div>
-}
+    // const useMockData = import.meta.env.REACT_APP_USE_MOCK_DATA === 'true';
+    const dataChoice = getData();
+    console.log('dataChoice:', dataChoice);
+
+    if(dataChoice === 'mocked') {
+      const mockData = USER_MAIN_DATA.find((el) => el.id == id);
+      console.log(mockData);
+      setData(mockData)
+      
+    } else if(dataChoice=== 'api') {
+      getAllDataUser(id)
+      .then((data) => {
+        setData(data);
+        // console.log(data)
+      })
+      .catch((error) => {
+        console.log('An error occurred:', error);
+      }); 
+    }
+  }, [id]);
+
+  if(!data || data.length === 0) {
+    return <div>Aucun utilisateur trouvé</div>
+  }
 
   return (
     <main className='main'>
@@ -55,7 +68,7 @@ if(!data || data.length === 0) {
             icon={caloriesIcon}
             infoEnergie={`${data.keyData.calorieCount/1000}kCal`}
             text='Calories'
-            /> 
+            />  
             <EnergieKeyData 
             icon={proteinIcon}
             infoEnergie={`${data.keyData.proteinCount}g`}

@@ -8,4 +8,4 @@ const HeaderDashboard = ({name}) => {
     </header>
   )
 }
-export default HeaderDashboard
+export default HeaderDashboard 

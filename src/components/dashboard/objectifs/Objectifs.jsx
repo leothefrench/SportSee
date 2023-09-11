@@ -1,9 +1,10 @@
 import './objectifs.scss'
 import { ResponsiveContainer, LineChart, Line, XAxis, Tooltip, ReferenceArea } from 'recharts';
-// import { USER_AVERAGE_SESSIONS } from '../../mock/data'
+import { USER_AVERAGE_SESSIONS } from '../../mock/data'
 import { useParams } from 'react-router-dom';
 import { getUserAverageSessions } from '../../../api/call';
 import { useState, useEffect } from 'react';
+import { getData } from '../../../service/dataSwitch'
 
 const Objectifs = () => {
 
@@ -11,14 +12,50 @@ const Objectifs = () => {
   const [dataDay, setDataDay] = useState([])
 
   useEffect(() => {
+
+    // const useMockData = import.meta.env.REACT_APP_USE_MOCK_DATA === 'true';
+    const dataChoice = getData();
+
+    if(dataChoice === 'mocked') {
+
+      const data = USER_AVERAGE_SESSIONS.find((el) => el.userId == id)
+      console.log(data);
+
+      if(data) {
+        const dataDay = data.sessions.map((data) => {
+
+          switch(data.day) {
+            case 1:
+              return {...data, day: 'L'}
+            case 2: 
+              return {...data, day: 'M'}
+            case 3: 
+              return {...data, day: 'M'}
+            case 4: 
+              return {...data, day: 'J'}
+            case 5: 
+              return {...data, day: 'V'}
+            case 6: 
+              return {...data, day: 'S'}
+            case 7: 
+              return {...data, day: 'D'}
+          }
+          
+        });
+        console.log(dataDay)
+        setDataDay(dataDay);
+      }
+
+    } else if (dataChoice === 'api') { 
     getUserAverageSessions(id)
       .then((data) => {
         setDataDay(data)
       })
       .catch((error) => {
         console.log('An error occurred', error);
-      })
-  }, [id])
+      });
+    }
+  }, [id]);
 
   return (
     <div className="container-line-graph">

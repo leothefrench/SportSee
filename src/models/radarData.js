@@ -10,4 +10,4 @@ export class RadarData {
         value: item.value,
       }));
     }
-  }
+  } 

@@ -3,6 +3,8 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { useParams } from 'react-router-dom';
 import {getUserInformation} from '../../../api/call'
 import { useState, useEffect } from 'react';
+import { USER_MAIN_DATA } from '../../mock/data'
+import { getData } from '../../../service/dataSwitch'
 
 export const KeyPerformanceIndice = () => {
 
@@ -10,15 +12,39 @@ export const KeyPerformanceIndice = () => {
   const [score, setScore] = useState([])
 
   useEffect(() => {
+
+    // const useMockData = import.meta.env.REACT_APP_USE_MOCK_DATA === 'true';
+    const dataChoice = getData();
+
+    if(dataChoice === 'mocked') {
+    // Données formatées pour les données mockées
+    const selectedUser = USER_MAIN_DATA.find(user => user.id == id);
+    console.log(selectedUser)
+  
+      if (!selectedUser) {
+        return <div>Utilisateur non trouvé</div>;
+      }
+    
+      const { firstName, lastName } = selectedUser.userInfos;
+      const { todayScore, score } = selectedUser;
+    
+      const data = [
+        { name: `${firstName} ${lastName}`, value: todayScore || score},
+        { name: 'Autres', value: 1 - (todayScore || score) } // Calcul du score restant
+      ];
+      setScore(data)
+
+    } else if (dataChoice === 'api') { 
     getUserInformation(id)
     .then((data) => {
       setScore(data)
     })
     .catch((error) => {
-      console.log('An error occurred:', error);
-    });
-  }, [id]);
-
+      console.log('An error occurred:', error)
+      });
+    }
+  }, [id, ]);
+  
   if(!score || score.length === 0) {
     return <div>Aucun utilisateur trouvé</div>
   }
@@ -44,7 +70,8 @@ export const KeyPerformanceIndice = () => {
         </PieChart>
       </ResponsiveContainer>
       <div className='container-keyPerformanceIndice__score-container'>
-        <span className='container-keyPerformanceIndice__score-container__score'>{score[0].value *100}% <br />
+        <span className='container-keyPerformanceIndice__score-container__score'>
+          {score[0].value *100}% <br />
         </span>
         <span className='container-keyPerformanceIndice__score-container__text'>de votre </span><br/>
         <span className='container-keyPerformanceIndice__score-container__text'>objectif</span>

@@ -1,5 +1,5 @@
 import './barChartWeight.scss'
-// import { USER_ACTIVITY } from '../../mock/data'
+import { USER_ACTIVITY } from '../../mock/data'
 import { useParams } from 'react-router-dom';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { ToolType } from './ToolType';
@@ -7,6 +7,7 @@ import iconWeight from '../../../assets/barChart-icons/Oval-poids-icon.svg'
 import iconCaloriesBrulees from '../../../assets/barChart-icons/Oval-clories-brulees-icon.svg'
 import { getUserActivity } from '../../../api/call'
 import { useState, useEffect } from 'react'; 
+import { getData } from '../../../service/dataSwitch'
 
 const BarChartWeight = () => {
  
@@ -14,6 +15,23 @@ const BarChartWeight = () => {
   const [userData, setUserData] = useState([])
 
    useEffect(() => {
+
+    // const useMockData = import.meta.env.REACT_APP_USE_MOCK_DATA === 'true';
+    const dataChoice = getData();
+
+    if(dataChoice === 'mocked') {    
+      const data = USER_ACTIVITY.find((user) => user.userId == id)
+
+      if(data) {
+        let dataSessions = data.sessions.map((el, index) => ({
+          day: index + 1,
+          kilogram: el.kilogram,
+          calories: el.calories
+        }));
+        setUserData(dataSessions)
+      }
+
+    } else if (dataChoice === 'api') { 
     getUserActivity(id)
       .then((data) => {
         setUserData(data);
@@ -21,8 +39,9 @@ const BarChartWeight = () => {
       .catch((error) => {
         console.log('An error occurred:', error);
       }); 
+    }
   }, [id]);
-
+  
   if(!userData || userData.length === 0) {
     return <div>Aucun utilisateur trouvé</div>
   }
@@ -53,7 +72,7 @@ const BarChartWeight = () => {
           <Bar yAxisId="calories" dataKey="calories" fill="#E60000" barSize={7} radius={[50, 50, 0, 0]}/>
         </BarChart>
       </ResponsiveContainer>
-    </div>
+    </div> 
   )
 }
 

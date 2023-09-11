@@ -51,7 +51,7 @@ export const getUserActivity = async (userId) => {
         return res.json()
       })
       .then((data) => {
-        // console.log(data)
+        // console.log(data) 
         const session = new Session(data.data.sessions); 
         return session.format();
       })
